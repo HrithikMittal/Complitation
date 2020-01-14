@@ -21,8 +21,9 @@ mongoose
     console.log("Error is ", err.message);
   });
 
+const data = require("./home.json");
 app.get("/", (req, res) => {
-  res.json(home.json);
+  res.json(data);
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
