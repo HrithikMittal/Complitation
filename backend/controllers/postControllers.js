@@ -25,10 +25,48 @@ const newPost = (req, res) => {
     });
 };
 
+const editPost = (req, res) => {
+  var post = req.post;
+  post = _.extend(post, req.body);
+  post.updated = Date.now();
+  console.log(post);
+  //   post.save(err => {
+  //     if (err) {
+  //       return res.status(400).json({
+  //         error: err
+  //       });
+  //     }
+  //     res.json(post);
+  //   });
+};
+
+const deletePost = (req, res) => {
+  let post = req.post;
+  console.log(post);
+  post
+    .remove()
+    .then(post => {
+      res.send({ Message: "Deleted Post successfully", post: post });
+    })
+    .catch(err => {
+      console.log("Error is ", err.message);
+    });
+};
+
+const isPoster = (req, res, next) => {
+  let isPoster = req.post && req.auth && req.post.postedBy._id == req.auth._id;
+  if (!isPoster) {
+    return res.status(403).json({
+      error: "User is not authorized"
+    });
+  }
+  next();
+};
+
 const postById = (req, res, next, id) => {
   Post.findById(id).exec((err, post) => {
     if (err || !post) {
-      res.status(404).json({
+      return res.status(404).json({
         error: "Post not found"
       });
     }
@@ -37,15 +75,11 @@ const postById = (req, res, next, id) => {
   });
 };
 
-const deletePost = (req, res) => {
-  console.log(req.profile);
-  console.log("=======================");
-  console.log(req.post);
-};
-
 module.exports = {
   getAllPosts,
   newPost,
+  editPost,
   deletePost,
-  postById
+  postById,
+  isPoster
 };

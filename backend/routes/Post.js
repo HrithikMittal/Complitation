@@ -10,9 +10,16 @@ router.post(
   userController.requireSingin,
   postController.newPost
 );
+router.put(
+  "/editpost/:postId",
+  userController.requireSingin,
+  postController.isPoster,
+  postController.editPost
+);
 router.delete(
   "/deletepost/:postId",
   userController.requireSingin,
+  postController.isPoster,
   postController.deletePost
 );
 

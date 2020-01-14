@@ -18,6 +18,9 @@ var postSchema = new mongoose.Schema({
   createdDate: {
     type: Date,
     required: true
+  },
+  updated: {
+    type: Date
   }
 });
 module.exports = Post = mongoose.model("Post", postSchema);

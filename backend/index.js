@@ -2,10 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 var app = express();
-
 dotenv.config();
-app.use(bodyParser.urlencoded({ extended: false }));
 
 var user = require("./routes/User");
 var post = require("./routes/Post");
@@ -26,6 +25,8 @@ app.get("/", (req, res) => {
   res.send("You are Welcome in My API world");
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use("/user", user);
 app.use("/post", post);
 
