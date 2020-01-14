@@ -61,6 +61,20 @@ const editUser = (req, res) => {
     });
 };
 
+const deleteUser = (req, res) => {
+  var user = req.profile;
+  console.log(user);
+  user
+    .remove()
+    .then(user => {
+      res.clearCookie("t");
+      res.send({ Message: "User deleted successfully", user: user });
+    })
+    .catch(err => {
+      console.log("Error is ", er.message);
+    });
+};
+
 const signout = (req, res) => {
   res.clearCookie("t");
   return res.status(200).json({ message: "Signout successfully" });
@@ -101,6 +115,7 @@ module.exports = {
   signup,
   signin,
   editUser,
+  deleteUser,
   signout,
   userById,
   requireSingin,

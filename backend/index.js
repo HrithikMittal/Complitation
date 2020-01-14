@@ -22,7 +22,7 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  res.send("You are Welcome in My API world");
+  res.json(home.json);
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));

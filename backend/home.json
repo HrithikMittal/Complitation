@@ -1,0 +1,10 @@
+{
+  "/post/allposts": "GET - Get all the posts",
+  "/newpost/:userId": "POST - Create new post - require Authentication and Authorization",
+  "/editpost/:postId": "PUT - Edit the post - require Authentication and Authorization",
+  "/deletepost/:postId": "DELETE - Delete the post - require Authentication and Authorization",
+  "/user/signup": "POST - Signup the User",
+  "/user/signin": "POST - Signin the User",
+  "/user/edituser/:userId": "PUT - Edit the User - require Authentication and Authorization",
+  "/user/deluser/:userId": "DELETE - Delete the User - require Authentication and Authorization"
+}
