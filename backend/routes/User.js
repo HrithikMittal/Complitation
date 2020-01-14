@@ -9,5 +9,12 @@ router.get("/", (req, res) => {
 
 router.post("/signup", userController.signup);
 router.post("/signin", userController.signin);
+router.put(
+  "/edituser/:userId",
+  userController.requireSingin,
+  userController.hasAuthorization,
+  userController.editUser
+);
 
+router.param("userId", userController.userById);
 module.exports = router;

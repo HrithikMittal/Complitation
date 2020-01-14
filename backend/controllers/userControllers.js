@@ -3,6 +3,7 @@ var User = require("../modals/User");
 var expressJwt = require("express-jwt");
 var jwt = require("jsonwebtoken");
 var salt = bcrypt.genSaltSync(10);
+var _ = require("underscore");
 require("dotenv").config();
 
 const signup = (req, res) => {
@@ -46,6 +47,20 @@ const signin = (req, res) => {
     });
 };
 
+const editUser = (req, res) => {
+  var user = req.profile;
+  user = _.extend(user, req.body);
+  console.log(user);
+  user
+    .save()
+    .then(user => {
+      res.send({ message: "User updated Successfully", user: user });
+    })
+    .catch(err => {
+      console.log("Error is ", err.message);
+    });
+};
+
 const signout = (req, res) => {
   res.clearCookie("t");
   return res.status(200).json({ message: "Signout successfully" });
@@ -64,6 +79,16 @@ const userById = (req, res, next, id) => {
   });
 };
 
+const hasAuthorization = (req, res, next) => {
+  const authorized = req.auth && req.profile && req.auth._id == req.auth._id;
+  if (!authorized) {
+    return res.status(403).json({
+      error: "User is not authorized"
+    });
+  }
+  next();
+};
+
 const requireSingin = expressJwt({
   // if the token is valid, express jwt appends the
   // verified users id in an auth key to the
@@ -75,7 +100,9 @@ const requireSingin = expressJwt({
 module.exports = {
   signup,
   signin,
+  editUser,
   signout,
   userById,
-  requireSingin
+  requireSingin,
+  hasAuthorization
 };

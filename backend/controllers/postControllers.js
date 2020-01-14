@@ -1,4 +1,5 @@
 var Post = require("../modals/Post");
+var _ = require("underscore");
 
 const getAllPosts = (req, res) => {
   Post.find()
@@ -30,14 +31,14 @@ const editPost = (req, res) => {
   post = _.extend(post, req.body);
   post.updated = Date.now();
   console.log(post);
-  //   post.save(err => {
-  //     if (err) {
-  //       return res.status(400).json({
-  //         error: err
-  //       });
-  //     }
-  //     res.json(post);
-  //   });
+  post.save(err => {
+    if (err) {
+      return res.status(400).json({
+        error: err
+      });
+    }
+    res.json(post);
+  });
 };
 
 const deletePost = (req, res) => {
