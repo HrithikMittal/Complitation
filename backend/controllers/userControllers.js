@@ -58,6 +58,7 @@ const userById = (req, res, next, id) => {
         error: "User not found"
       });
     }
+    user.password = undefined;
     req.profile = user; // adds profile object in req with user info
     next();
   });
