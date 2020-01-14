@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
-var postSchema = mongoose.Schema({
+const { ObjectId } = mongoose.Schema;
+
+var postSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -8,9 +10,14 @@ var postSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  postedBy: {
+    type: ObjectId,
+    ref: "User",
+    requird: true
+  },
   createdDate: {
     type: Date,
     required: true
   }
 });
-module.exports = Post = mongoose.model("Post", postSchema.getAllposts);
+module.exports = Post = mongoose.model("Post", postSchema);

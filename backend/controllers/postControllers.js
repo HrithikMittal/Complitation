@@ -11,7 +11,7 @@ const getAllPosts = (req, res) => {
     });
 };
 
-const sendPost = (req, res) => {
+const newPost = (req, res) => {
   var newPost = new Post(req.body);
   newPost
     .save()
@@ -25,5 +25,5 @@ const sendPost = (req, res) => {
 
 module.exports = {
   getAllPosts,
-  sendPost
+  newPost
 };
