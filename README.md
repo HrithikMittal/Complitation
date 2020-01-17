@@ -9,4 +9,22 @@
   - Blogs can we access through the User Profile
   - User Profile and Writer Profile is Accessed to everyone.
   
+  ## API Routes
+  <table>
+    <tr>
+     <th>S.No.</th>
+     <th>Path</th>
+     <th>Method</th>
+     <th>Description</th>
+     <th>Requirements</th>
+    </tr>
+    <tr>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    </tr>
+  </table>
+  
  # Features in Frontend
