@@ -8,3 +8,5 @@
   - Comment Section Would be there for users.
   - Blogs can we access through the User Profile
   - User Profile and Writer Profile is Accessed to everyone.
+  
+ # Features in Frontend
