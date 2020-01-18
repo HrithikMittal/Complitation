@@ -85,6 +85,13 @@
      <td>Delete the Post</td>
      <td>PostId(Authentication and Authorization)</td>
     </tr>
+    <tr>
+     <td>5.</td>
+     <td>/tags</td>
+     <td>GET</td>
+     <td>Get all the post on the basis of tags</td>
+     <td>NULL</td>
+    </tr>
   </table>
   
  # Features in Frontend
