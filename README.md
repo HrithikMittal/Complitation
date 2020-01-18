@@ -48,4 +48,43 @@
     </tr>
   </table>
   
+  
+  <table>
+    <tr>
+     <th>S.No.</th>
+     <th>Path</th>
+     <th>Method</th>
+     <th>Description</th>
+     <th>Requirements</th>
+    </tr>
+    <tr>
+     <td>1.</td>
+     <td>/post/allposts</td>
+     <td>GET</td>
+     <td>Get all the posts</td>
+     <td>NULL</td>
+    </tr>
+    <tr>
+     <td>2.</td>
+     <td>/newpost/:userId</td>
+     <td>POST</td>
+     <td>Creating the new post</td>
+     <td>title,body,tags <br/> userId(Authentication)</td>
+    </tr>
+    <tr>
+     <td>3.</td>
+     <td>/editpost/:postId</td>
+     <td>PUT</td>
+     <td>Edit the Post</td>
+     <td>title,body,tags <br /> postId(Authentication and Authorization) </td>
+    </tr>
+    <tr>
+     <td>4.</td>
+     <td>/deletepost/:postId</td>
+     <td>DEL</td>
+     <td>Delete the Post</td>
+     <td>PostId(Authentication and Authorization)</td>
+    </tr>
+  </table>
+  
  # Features in Frontend
