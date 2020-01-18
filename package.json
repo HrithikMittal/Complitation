@@ -4,7 +4,7 @@
   "description": "backend of Post Application",
   "main": "index.js",
   "scripts": {
-    "test": "npm index.js"
+    "test": "node index.js"
   },
   "author": "Adhikansh Mittal",
   "license": "ISC",
