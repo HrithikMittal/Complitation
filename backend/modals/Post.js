@@ -10,6 +10,9 @@ var postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  tags: {
+    type: Array
+  },
   postedBy: {
     type: ObjectId,
     ref: "User",
