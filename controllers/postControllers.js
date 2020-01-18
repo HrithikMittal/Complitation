@@ -14,8 +14,10 @@ const getAllPosts = (req, res) => {
 
 const newPost = (req, res) => {
   var newPost = new Post(req.body);
+  newPost.tags = req.body.tags.split(",");
   newPost.postedBy = req.profile;
   newPost.createdDate = Date.now();
+
   newPost
     .save()
     .then(response => {
@@ -29,8 +31,10 @@ const newPost = (req, res) => {
 const editPost = (req, res) => {
   var post = req.post;
   post = _.extend(post, req.body);
+  if (req.body.tags) {
+    post.tags = req.body.tags.split(",");
+  }
   post.updated = Date.now();
-  console.log(post);
   post.save(err => {
     if (err) {
       return res.status(400).json({
@@ -76,11 +80,30 @@ const postById = (req, res, next, id) => {
   });
 };
 
+const getPostByTag = async (req, res) => {
+  var response = [];
+  var tag = req.body.tag.split(",");
+  await Post.find().then(async post => {
+    await tag.map(async singletag => {
+      await post.forEach(async post => {
+        if (post.tags.includes(singletag)) {
+          await response.push(post);
+        }
+      });
+    });
+  });
+  var returnval = _.uniq(response, function(x) {
+    return x._id;
+  });
+  res.send(returnval);
+};
+
 module.exports = {
   getAllPosts,
   newPost,
   editPost,
   deletePost,
   postById,
-  isPoster
+  isPoster,
+  getPostByTag
 };

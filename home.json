@@ -1,5 +1,6 @@
 {
   "/post/allposts": "GET - Get all the posts",
+  "/post/tags": "GET - GET all the post on the basis of tags",
   "/newpost/:userId": "POST - Create new post - require Authentication and Authorization",
   "/editpost/:postId": "PUT - Edit the post - require Authentication and Authorization",
   "/deletepost/:postId": "DELETE - Delete the post - require Authentication and Authorization",

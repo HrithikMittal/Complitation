@@ -5,6 +5,7 @@ var postController = require("../controllers/postControllers");
 var userController = require("../controllers/userControllers");
 
 router.get("/allposts", postController.getAllPosts);
+router.get("/tags", postController.getPostByTag);
 router.post(
   "/newpost/:userId",
   userController.requireSingin,

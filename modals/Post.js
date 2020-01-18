@@ -11,7 +11,8 @@ var postSchema = new mongoose.Schema({
     required: true
   },
   tags: {
-    type: Array
+    type: Array,
+    required: true
   },
   postedBy: {
     type: ObjectId,

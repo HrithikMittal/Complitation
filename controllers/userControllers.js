@@ -30,7 +30,7 @@ const signup = (req, res) => {
 const signin = (req, res) => {
   User.findOne({ email: req.body.email })
     .then(user => {
-      if (!user) res.status(404).send("Not Found");
+      if (!user) return res.status(404).send("Not Found");
 
       user.password = undefined;
 
