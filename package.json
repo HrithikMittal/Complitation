@@ -4,7 +4,7 @@
   "description": "backend of Post Application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm index.js"
   },
   "author": "Adhikansh Mittal",
   "license": "ISC",
